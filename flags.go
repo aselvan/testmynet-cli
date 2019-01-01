@@ -81,7 +81,7 @@ func (x *cmdLineOpts) parseFlags() error {
 	flag.StringVar(&x.location, "location", defaultLocation, "TestMyNet location")
 	flag.IntVar(&x.datasize, "size", defaultDataSize, "Test size in KBytes")
 	flag.BoolVar(&x.dryrun, "dry-run", false, "Dry-run mode")
-	flag.BoolVar(&x.force, "force", false, "Allow program to hit testmy.net more often than it should.")
+	flag.BoolVar(&x.force, "I-WANT-TO-GET-BANNED", false, "Allow program to hit testmy.net more often than it should.")
 	flag.Var(&x.verbose, "verbose", "Verbose mode (use multiple times to increase level)")
 	flag.Parse()
 

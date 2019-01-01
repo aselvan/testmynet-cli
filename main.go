@@ -14,11 +14,11 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
+	"strings"
 	"time"
-  "strings"
 
+	"github.com/dustin/go-humanize"
 	"github.com/marcopaganini/logger"
-  "github.com/dustin/go-humanize"
 )
 
 const (
@@ -55,7 +55,6 @@ func (wc WriteCounter) PrintProgress() {
 	fmt.Printf("\rDownloading... %s complete", humanize.Bytes(wc.Total))
 }
 
-
 // download retrieves test data from test servers and returns the number of
 // bytes effectively read and the time it took to read those bytes.
 func download(server string, datasize int, dryrun bool) (int64, time.Duration, error) {
@@ -77,8 +76,8 @@ func download(server string, datasize int, dryrun bool) (int64, time.Duration, e
 		tstart := time.Now()
 
 		//written, err = io.Copy(ioutil.Discard, res.Body)
-    // modified to use progress counter
-    counter :=  &WriteCounter{}
+		// modified to use progress counter
+		counter := &WriteCounter{}
 		written, err = io.Copy(ioutil.Discard, io.TeeReader(res.Body, counter))
 
 		if err != nil {
@@ -182,7 +181,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error downloading data from %s: %v\n", opt.server, err)
 	}
-
 
 	// Calculate bandwidth and print.
 	bw := (float64(bytes) * 8 / duration.Seconds()) / 1e6
