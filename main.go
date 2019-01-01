@@ -23,7 +23,7 @@ import (
 
 const (
 	stateFile          = ".testmynet-cli.state"
-	minDurationMinutes = 2
+	minDurationMinutes = 15
 )
 
 var (
